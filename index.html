@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pavith Amarasinghe | GIS Portfolio</title>
+<meta name="description" content="Pavith Amarasinghe: GIS analyst and cartographer from Sri Lanka. Spatial analysis, remote sensing, web GIS and cartography in QGIS, ArcGIS Pro, Python and Illustrator.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, confident developer-style portfolio, dark and quiet
+   IDEA: the user's reference UI kit (Lucas Viga): pill nav, blob portrait, XP cards, glowing stacked words
+   PICTURE: portrait in a mint blob, then the maps themselves as the large pictures
+   COLOUR and TYPE: #0c0c0d / #131313 / #272727 greys, #5fb9b0 teal, #b292ff purple; Raleway only
+   LAYOUT: hero, XP strip, glow words, map galleries, tech grid, experience cards, contact pill */
+:root{color-scheme:dark;--bg:#0c0c0d;--card:#131313;--line:#272727;--mute:#6f6f6f;--soft:#c8c8c8;--ink:#ffffff;--teal:#5fb9b0;--purple:#b292ff}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--soft);font:16px/1.7 Raleway,Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{color:var(--ink);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,42px)}
+h3{font-size:19px;font-weight:600}
+b,strong{color:var(--ink);font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 max(5vw,18px)}
+section{padding:clamp(56px,8vw,110px) 0}
+/* nav */
+nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padding:0 12px}
+.pill{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 22px;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:9px 22px;font-size:14px}
+.pill a{text-decoration:none;color:var(--purple);padding:4px 0}
+.pill a.me{color:var(--ink);font-weight:600}
+.pill a:hover,.pill a:focus-visible{color:var(--ink)}
+.icons{display:flex;gap:12px}
+.icons a{display:inline-flex;color:var(--soft)}
+.icons svg{width:16px;height:16px;fill:currentColor}
+/* hero */
+.hero{padding-top:clamp(60px,9vw,120px);position:relative}.hero .wrap,.words p{position:relative;z-index:1}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,60px);font-weight:400}
+.hero p{max-width:56ch;color:var(--mute);font-size:17px;margin:22px 0 28px}
+.hero p b{color:var(--soft)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink)}
+.btn.w{background:#eaeaea;color:#111}
+.btn:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+.portrait{justify-self:center;width:min(380px,100%);position:relative;animation:float 7s ease-in-out infinite}
+.portrait svg{display:block;width:100%;height:auto;overflow:visible}
+.portrait .halo{position:absolute;inset:12% 10% 8%;border-radius:50%;background:radial-gradient(circle,rgba(95,185,176,.55),transparent 70%);filter:blur(40px);z-index:-1}
+.portrait .ring{fill:none;stroke:var(--purple);stroke-width:1.5;stroke-dasharray:6 10;opacity:.55;transform-origin:250px 250px;animation:spin 40s linear infinite}
+.portrait image{animation:zoom 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes zoom{from{opacity:0;transform:scale(1.12);transform-origin:250px 250px}to{opacity:1;transform:scale(1);transform-origin:250px 250px}}
+.glow{position:absolute;z-index:0;pointer-events:none;border-radius:50%;filter:blur(70px);opacity:.45}
+/* XP */
+.xp .wrap{display:grid;grid-template-columns:200px minmax(0,1fr);gap:30px;align-items:center}
+.xpn small{display:block;font-size:13px;color:var(--mute)}
+.xpn strong{display:block;font-size:46px;line-height:1;margin:4px 0;font-weight:700}
+.xpn span{font-size:13px;color:var(--mute)}
+.xpn+.xpn{margin-top:22px}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.tc{flex:0 0 200px;scroll-snap-align:start;border-radius:22px;padding:20px;color:#151515;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end}
+.tc i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:7px;background:rgba(0,0,0,.82);color:#fff;font-size:12px;font-weight:700;margin-bottom:auto}
+.tc b{color:#111;font-size:17px;margin-top:18px}
+.tc span{font-size:13px;line-height:1.4}
+/* words */
+.words{text-align:center;position:relative;overflow:hidden}
+.words p{margin:0;font-size:clamp(30px,5vw,50px);line-height:1.35;font-weight:500;position:relative}
+.words .sub{font-size:16px;color:var(--mute);margin-top:22px}
+/* work */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 30px;margin-bottom:26px}
+.head p{margin:0;color:var(--mute);max-width:52ch}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tabs button{min-height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--soft);font:500 14px Raleway,sans-serif;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--purple);border-color:var(--purple);color:#111}
+.tabs button:focus-visible,.card:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-align:left;padding:0;font:inherit;color:inherit;cursor:zoom-in;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:#3a3a3a;transform:translateY(-2px)}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;display:block;background:#1b1b1b}
+.card div{padding:16px 18px 20px}
+.card p{margin:6px 0 10px;font-size:14px;line-height:1.55;color:var(--mute)}
+.card small{font-size:12px;font-weight:600;color:var(--teal)}
+/* tech */
+.tech{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:28px}
+.tech div{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--card)}
+.tech h3{font-size:14px;color:var(--ink);margin-bottom:8px}
+.tech ul{list-style:none;margin:0;padding:0;font-size:14px}
+.tech li{display:flex;gap:9px;align-items:center;padding:3px 0}
+.tech li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--purple));flex:none}
+/* experience */
+.exp{display:grid;gap:18px;margin-top:28px}
+.ec{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:28px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+.ec h3{font-size:17px}
+.ec .meta{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.6}
+.ec .meta time{color:var(--teal);font-weight:600;display:block}
+.ec h4{margin:0 0 6px;color:var(--purple);font-size:15px;font-weight:600}
+.ec ul{margin:0;padding-left:18px;font-size:15px;color:var(--soft)}
+.ec li{margin:5px 0}
+.ec p{margin:0;font-size:15px}
+/* contact */
+.contact{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:14px 16px 14px 28px}
+.contact span{font-size:15px;overflow-wrap:anywhere}
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px;font-size:14px}
+.cl div{color:var(--mute)}.cl b{display:block;color:var(--soft);font-weight:600;overflow-wrap:anywhere}
+footer{padding:30px 0 50px;color:var(--mute);font-size:13px}
+/* lightbox */
+dialog{border:1px solid var(--line);border-radius:18px;padding:0;max-width:min(1200px,96vw);max-height:95vh;background:var(--card);color:var(--soft);overflow:hidden}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+dialog img{display:block;max-width:100%;max-height:80vh;margin:0 auto}
+dialog .cap{display:flex;gap:10px;align-items:center;padding:10px 14px}
+dialog .cap p{margin:0;flex:1;font-size:14px}
+dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px solid var(--line);background:#1b1b1b;color:var(--ink);font:600 14px Raleway,sans-serif;cursor:pointer;padding:0 14px}
+@media(max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ec{grid-template-columns:minmax(0,1fr);gap:12px}}
+@media(max-width:640px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.portrait{grid-row:1;width:250px}.xp .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}.contact{border-radius:22px}.pill{gap:2px 14px;padding:8px 16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.portrait,.portrait .ring,.portrait image{animation:none}.card{transition:none}}
+</style>
+</head>
+<body>
+<nav><div class="pill">
+  <a class="me" href="#top">pavith</a><a href="#work">work</a><a href="#experience">experience</a><a href="#contact">contact</a>
+  <span class="icons">
+    <a href="https://github.com/pavith9911" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a>
+    <a href="https://www.linkedin.com/in/pavith-amarasinghe" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+    <a href="#contact" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 8.4L2.6 6.5v.1L12 14l9.4-7.4v-.1L12 12.4z"/></svg></a>
+  </span>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow" style="width:420px;height:420px;background:#5b2bd6;left:-140px;top:40px"></div>
+  <div class="wrap">
+    <div>
+      <h1>Hi, I'm Pavith</h1>
+      <p>I'm a <b>GIS Analyst</b> with <b>2+ years</b> of spatial analysis, remote sensing and web GIS work, and <b>5+ years</b> as a <b>freelance cartographer</b> making maps for clients in the USA, Europe, the Middle East and Australia. I work in QGIS and ArcGIS Pro, automate with Python, and finish maps in Illustrator. Based in Sri Lanka.</p>
+      <div class="btns"><a class="btn w" href="Pavith_Amarasinghe_CV.pdf" download>Download CV</a><a class="btn" href="#work">See my work</a></div>
+    </div>
+    <div class="portrait"><div class="halo"></div>
+      <svg viewBox="0 0 500 500" role="img" aria-label="Portrait of Pavith Amarasinghe">
+        <defs>
+          <clipPath id="pebble"><path d="M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z"><animate attributeName="d" dur="14s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1" keyTimes="0;.33;.66;1" values="M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z;M95 125 C165 58 322 52 412 88 C482 118 472 212 446 292 C410 392 308 446 208 430 C108 414 28 338 36 252 C40 204 58 168 95 125Z;M60 170 C100 80 280 30 390 50 C480 66 492 180 470 270 C442 372 340 462 230 446 C128 432 46 376 28 286 C20 236 36 206 60 170Z;M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z"/></path></clipPath>
+          <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6fbf6"/><stop offset=".55" stop-color="#5fb9b0"/><stop offset="1" stop-color="#1e5c56"/></linearGradient>
+        </defs>
+        <path class="ring" d="M95 125 C165 58 322 52 412 88 C482 118 472 212 446 292 C410 392 308 446 208 430 C108 414 28 338 36 252 C40 204 58 168 95 125Z" transform="translate(-14 10) scale(1.04)"/>
+        <g clip-path="url(#pebble)"><rect width="500" height="500" fill="url(#mint)"/><image href="img/pavith.jpg" x="0" y="20" width="500" height="500" preserveAspectRatio="xMidYMin slice"/></g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="xp" aria-label="Experience summary">
+  <div class="wrap">
+    <div>
+      <div class="xpn"><small>2+ years of</small><strong>GIS</strong><span>analysis &amp; remote sensing</span></div>
+      <div class="xpn"><small>5+ years of</small><strong>Maps</strong><span>freelance cartography</span></div>
+    </div>
+    <div class="rail" id="rail"></div>
+  </div>
+</section>
+
+<section class="words" aria-label="Focus areas">
+  <div class="glow" style="width:520px;height:300px;background:#7b2fe0;left:50%;top:30%;transform:translateX(-50%)"></div>
+  <div class="glow" style="width:260px;height:260px;background:#b0258f;left:60%;top:10%"></div>
+  <p style="color:#d2bdff">Spatial analysis</p>
+  <p style="color:#b292ff">Remote sensing</p>
+  <p style="color:#8a5cf6">Cartography</p>
+  <p class="sub">What I do, from raw data to a finished map</p>
+</section>
+
+<section id="work" style="padding-top:20px"><div class="wrap">
+  <div class="head"><h2>Selected work</h2><p>Click any map to view it full size. Use the arrow keys to move through the gallery.</p></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section aria-label="Technologies"><div class="wrap">
+  <h2>These are the technologies<br>I've been using</h2>
+  <div class="tech">
+    <div><h3>GIS software</h3><ul><li style="--c:#5fb9b0">QGIS</li><li style="--c:#5fb9b0">ArcGIS Pro</li><li style="--c:#5fb9b0">PyQGIS</li></ul></div>
+    <div><h3>Spatial analysis</h3><ul><li>Weighted overlay (MCDA)</li><li>Hotspot (Getis-Ord Gi*)</li><li>Network &amp; isochrones</li><li>Buffer &amp; overlay</li><li>DEM, terrain, hydrology</li></ul></div>
+    <div><h3>Remote sensing</h3><ul><li style="--c:#c5c99e">Sentinel-2 / Landsat</li><li style="--c:#c5c99e">NDVI</li><li style="--c:#c5c99e">Land use / land cover</li><li style="--c:#c5c99e">Change detection</li></ul></div>
+    <div><h3>Code &amp; data</h3><ul><li style="--c:#85a0a8">Python, GeoPandas, Rasterio</li><li style="--c:#85a0a8">SQL</li><li style="--c:#85a0a8">JavaScript, Leaflet</li><li style="--c:#85a0a8">Power BI, Tableau</li></ul></div>
+    <div><h3>Design</h3><ul><li style="--c:#e7a8d8">Illustrator</li><li style="--c:#e7a8d8">Photoshop</li><li style="--c:#e7a8d8">InDesign</li></ul></div>
+  </div>
+</div></section>
+
+<section id="experience" style="padding-top:0"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="exp">
+    <article class="ec"><div><h3>Freelance GIS Analyst</h3><div class="meta">Fiverr · Upwork · Remote<time>2024 – present</time></div></div>
+      <div><h4>Spatial analysis, remote sensing &amp; web GIS</h4><ul><li>Site suitability, hotspot, buffer and network analysis for international clients in QGIS and ArcGIS Pro.</li><li>Satellite image processing (Sentinel-2 NDVI, land cover), coordinate system and data conversion.</li><li>Interactive web maps and dashboards in Leaflet; Python tools for cleaning and validating field data.</li></ul></div></article>
+    <article class="ec"><div><h3>Freelance Cartographer</h3><div class="meta">Fiverr · Etsy · Remote<time>2021 – present</time></div></div>
+      <div><h4>Custom maps for print and digital</h4><ul><li>Delivered maps for clients in the USA, UK, Europe, the Middle East and Australia: project maps, travel-guide maps, trail and terrain maps, event and neighbourhood maps.</li><li>Built a Python/PyQGIS pipeline that styles OSM and client data, then finished layouts in Illustrator.</li><li>Run every project end to end: brief, data, drafts, revisions and print-ready files.</li></ul></div></article>
+    <article class="ec"><div><h3>Researcher, space agriculture</h3><div class="meta">University of Sri Jayewardenepura · J'pura Astrals<time>Aug 2024</time></div></div>
+      <div><h4>Silver Award &amp; Best Poster Award</h4><p>International Space Science and Scientific Payload Competition, Chinese University of Hong Kong. Plant growth under simulated microgravity and radiation, with a Raspberry Pi controlled positioning machine and Python image analysis.</p></div></article>
+    <article class="ec"><div><h3>Internship Trainee</h3><div class="meta">Silueta (Pvt) Ltd, MAS Holdings<time>Jul – Oct 2024</time></div></div>
+      <div><h4>Manufacturing Operations Systems</h4><p>Analysed ISO 9001:2015 audit data, tracked equipment calibration and prepared corrective-action reports.</p></div></article>
+  </div>
+  <h2 style="margin-top:64px">Education</h2>
+  <div class="exp">
+    <article class="ec"><div><h3>M.Sc. in Computer Science</h3><div class="meta">University of Sri Jayewardenepura<time>Reading</time></div></div>
+      <div><h4>Thesis research</h4><p>Probabilistic, transferable spatiotemporal graph neural network for flood forecasting in sparsely gauged tropical basins, with the Kelani River basin as the case study.</p></div></article>
+    <article class="ec"><div><h3>B.Sc. in Physical Science</h3><div class="meta">University of Sri Jayewardenepura<time>2021 – 2024</time></div></div>
+      <div><h4>Mathematics · Physics · Computer Science</h4><p>Also: Certificate in Graphic Designing (A+), University of Kelaniya.</p></div></article>
+  </div>
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap">
+  <h2 style="margin-bottom:22px">Let's work together</h2>
+  <div class="contact"><span>pavithamarasinghe@gmail.com</span><span class="btns"><a class="btn" href="Pavith_Amarasinghe_CV.pdf" download>Download CV</a><a class="btn w" href="mailto:pavithamarasinghe@gmail.com">Email me</a></span></div>
+  <div class="cl">
+    <div>Phone<b>+94 77 305 9606</b></div>
+    <div>LinkedIn<b><a href="https://www.linkedin.com/in/pavith-amarasinghe">linkedin.com/in/pavith-amarasinghe</a></b></div>
+    <div>GitHub<b><a href="https://github.com/pavith9911">github.com/pavith9911</a></b></div>
+    <div>Location<b>Kadawatha, Sri Lanka</b></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Pavith Amarasinghe · Web GIS demos use labelled sample data where noted.</div></footer>
+
+<dialog id="lb"><img id="lbImg" alt=""><div class="cap"><button id="prev" aria-label="Previous map">‹</button><p id="lbCap"></p><button id="next" aria-label="Next map">›</button><button id="close">Close</button></div></dialog>
+
+<script>
+{
+const tools=[['Q','QGIS','Daily driver for analysis and layouts','#c5c99e'],['A','ArcGIS Pro','Used on client projects','#85a0a8'],['Py','Python','PyQGIS, GeoPandas, Rasterio','#c8c8c8'],['Ai','Illustrator','Print-ready map finishing','#bfe3dc'],['RS','Remote sensing','Sentinel-2, NDVI, land cover','#d9c2ff'],['JS','Leaflet','Interactive web maps','#e9d8a6']];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.getElementById('rail').innerHTML=tools.map(t=>`<div class="tc" style="background:${t[3]}"><i>${esc(t[0])}</i><b>${esc(t[1])}</b><span>${esc(t[2])}</span></div>`).join('');
+
+const sets={
+'Spatial analysis':[
+['v03','Solar farm site suitability','Weighted overlay (MCDA) of slope, distance to power lines and roads, and aspect, with exclusion zones. Mojave Desert, California.','QGIS · Python · MCDA'],
+['v06','Hotspot analysis','4,569 food venues aggregated to 200 m hexagons; Getis-Ord Gi* finds significant clusters. Lisbon.','Getis-Ord Gi* · Python'],
+['v07','Walking isochrones','15-minute walking catchments on the street network from Copenhagen Central Station.','Network analysis · OSM'],
+['v08','NDVI vegetation health','Sentinel-2 NDVI classes of vegetation condition around Polonnaruwa, Sri Lanka.','Remote sensing · Sentinel-2'],
+['v09','Land use / land cover','10 m land cover classes with area statistics, Colombo Metropolitan Region.','ESA WorldCover · Sentinel'],
+['v02','Shoreland buffer analysis','Every building within 1,000 ft of the shoreline, classed by distance for zoning. Lake Minnetonka, Minnesota.','Buffer · Overlay'],
+['v04','Topographic map','Hillshade, hypsometric tint and contours for Mount Rainier, Washington.','DEM · Terrain'],
+['v01','Study area map','Location and physiographic setting of Boulder County, Colorado, with locator inset.','DEM · Cartography'],
+['v10','City tourist map','Places to visit in Kandy city centre, categorised points and legend.','OSM · Cartography']],
+'Web GIS':[
+['w01','Sri Lanka District Atlas','Choropleth web map of 25 districts, Census 2012 vs 2024, with 9 indicators, ranking chart and CSV/GeoJSON export.','Leaflet · JavaScript · Python'],
+['w04','Interactive site suitability','Weighted-overlay model in the browser with adjustable weights, exclusions and ranked top-10 sites.','MCDA · Canvas'],
+['w05','Live earthquake dashboard','USGS feed refreshed every 60 s: depth-coloured markers, KPIs, magnitude histogram and timeline.','Real-time GeoJSON'],
+['w06','Satellite before/after viewer','Swipe between two dates of NASA GIBS imagery to compare change, such as the Aral Sea.','WMTS · NASA GIBS'],
+['w03','Plot plan overlay','Subdivision plan georeferenced onto satellite imagery with plot filters, measure tool and export.','Georeferencing · Leaflet'],
+['w07','GIS data-cleaning toolkit','Python script that fixes DMS coordinates, swapped lat/long and duplicates, assigns districts and writes a QA report.','Python · Data QA']],
+'Client cartography':[
+['c36','Middle East & Africa energy projects','Major energy projects plotted from a client database with insets and a categorised directory.','QGIS · Illustrator'],
+['c34','Saudi Arabia projects map','Top projects across Saudi Arabia with regional insets and a project directory.','QGIS · Illustrator'],
+['c35','Alpine road trip terrain map','Route from client GPX tracks across five countries, with overnight towns and numbered passes.','GPX · DEM · Illustrator'],
+['c03','Route 66 travel guide map','Chicago to Santa Monica route with stops and legend, for a travel guide book.','Cartography · Illustrator'],
+['c05','South Africa provinces map','Nine provinces with numbered locations and a Cape Town inset, for a travel guide.','Cartography · Illustrator'],
+['c02','Cape Town experiences map','Numbered points of interest with index and inset maps for a travel guide.','Cartography'],
+['c27','County plat composite','1916 plat book pages of Polk, Clearwater and Beltrami counties, Minnesota, georeferenced into one map.','Georeferencing · Illustrator'],
+['c26','5K cross country course map','Race course with mile markers over satellite imagery for a school meet.','Satellite base · Illustrator'],
+['c17','Tampa Bay story map','Personal locations around Tampa Bay on a satellite base with a numbered story legend.','Satellite base · Illustrator'],
+['c30','St. Johns community art map','Mural and sculpture locator map with categories and QR link, Oregon.','OSM · Illustrator'],
+['c41','Mid-Beach neighbourhood map','Illustrated hotel neighbourhood map of Miami Beach with numbered places.','Illustrated cartography'],
+['c31','Alta Via 1 trail poster','Dolomites trail on contour terrain, styled for print.','DEM · Contours'],
+['c28','Off-road trip commemorative map','30 × 40 in canvas tracing a group route across the western USA.','QGIS · Illustrator'],
+['c10','Sydney railway network','Schematic railway map of the Sydney network for print.','Schematic cartography'],
+['c40','Total solar eclipse 2026','Path of totality on an orthographic globe, A3 print.','Projections · Illustrator']]};
+const names=Object.keys(sets);let active=names[0];let list=sets[active];
+const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
+const render=()=>{
+  tabs.innerHTML=names.map(n=>`<button role="tab" aria-selected="${n===active}" data-n="${esc(n)}">${esc(n)} · ${sets[n].length}</button>`).join('');
+  list=sets[active];
+  grid.innerHTML=list.map((d,i)=>`<button class="card" data-i="${i}"><img loading="lazy" src="img/${d[0]}_t.jpg" alt="${esc(d[1])}"><div><h3>${esc(d[1])}</h3><p>${esc(d[2])}</p><small>${esc(d[3])}</small></div></button>`).join('');
+};
+render();
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;active=b.dataset.n;render();});
+const lb=document.getElementById('lb'),li=document.getElementById('lbImg'),lc=document.getElementById('lbCap');let cur=0;
+const show=i=>{cur=(i+list.length)%list.length;const d=list[cur];li.src='img/'+d[0]+'.jpg';li.alt=d[1];lc.textContent=d[1]+' — '+d[2];};
+grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;show(+c.dataset.i);lb.showModal();});
+document.getElementById('prev').onclick=()=>show(cur-1);
+document.getElementById('next').onclick=()=>show(cur+1);
+document.getElementById('close').onclick=()=>lb.close();
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+document.addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+}
+</script>
+</body>
+</html>
