@@ -22,7 +22,7 @@ h1,h2,h3{color:var(--ink);font-weight:400;line-height:1.1;margin:0;text-wrap:bal
 h2{font-size:clamp(30px,4vw,42px)}
 h3{font-size:19px;font-weight:600}
 b,strong{color:var(--ink);font-weight:700}
-.wrap{max-width:1120px;margin:0 auto;padding:0 max(5vw,18px)}
+.wrap{max-width:1560px;margin:0 auto;padding:0 clamp(16px,3.5vw,48px)}
 section{padding:clamp(56px,8vw,110px) 0}
 /* nav */
 nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padding:0 12px}
@@ -35,18 +35,17 @@ nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padd
 .icons svg{width:16px;height:16px;fill:currentColor}
 /* hero */
 .hero{padding-top:clamp(60px,9vw,120px);position:relative}.hero .wrap,.words p{position:relative;z-index:1}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:center}
 .hero h1{font-size:clamp(40px,6vw,60px);font-weight:400}
-.hero p{max-width:56ch;color:var(--mute);font-size:17px;margin:22px 0 28px}
+.hero p{max-width:62ch;color:var(--mute);font-size:17px;margin:22px 0 28px}
 .hero p b{color:var(--soft)}
 .btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink)}
 .btn.w{background:#eaeaea;color:#111}
 .btn:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
-.portrait{justify-self:center;width:min(380px,100%);position:relative;animation:float 7s ease-in-out infinite}
+.portrait{justify-self:center;width:min(440px,100%);position:relative;animation:float 7s ease-in-out infinite}
 .portrait svg{display:block;width:100%;height:auto;overflow:visible}
 .portrait .halo{position:absolute;inset:12% 10% 8%;border-radius:50%;background:radial-gradient(circle,rgba(95,185,176,.55),transparent 70%);filter:blur(40px);z-index:-1}
-.portrait .ring{fill:none;stroke:var(--purple);stroke-width:1.5;stroke-dasharray:6 10;opacity:.55;transform-origin:250px 250px;animation:spin 40s linear infinite}
 .portrait image{animation:zoom 1.4s cubic-bezier(.2,.8,.2,1) both}
 @keyframes float{50%{transform:translateY(-12px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -74,13 +73,15 @@ nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padd
 .tabs button{min-height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--soft);font:500 14px Raleway,sans-serif;cursor:pointer}
 .tabs button[aria-selected=true]{background:var(--purple);border-color:var(--purple);color:#111}
 .tabs button:focus-visible,.card:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-align:left;padding:0;font:inherit;color:inherit;cursor:zoom-in;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
 .card:hover{border-color:#3a3a3a;transform:translateY(-2px)}
 .card img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;display:block;background:#1b1b1b}
 .card div{padding:16px 18px 20px}
 .card p{margin:6px 0 10px;font-size:14px;line-height:1.55;color:var(--mute)}
 .card small{font-size:12px;font-weight:600;color:var(--teal)}
+.card.live{cursor:pointer;text-decoration:none}
+.card .go{display:flex;width:fit-content;margin-top:14px;padding:6px 14px;border-radius:999px;background:var(--purple);color:#111;font-size:13px;font-weight:600}
 /* tech */
 .tech{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:28px}
 .tech div{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--card)}
@@ -111,9 +112,9 @@ dialog img{display:block;max-width:100%;max-height:80vh;margin:0 auto}
 dialog .cap{display:flex;gap:10px;align-items:center;padding:10px 14px}
 dialog .cap p{margin:0;flex:1;font-size:14px}
 dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px solid var(--line);background:#1b1b1b;color:var(--ink);font:600 14px Raleway,sans-serif;cursor:pointer;padding:0 14px}
-@media(max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ec{grid-template-columns:minmax(0,1fr);gap:12px}}
-@media(max-width:640px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.portrait{grid-row:1;width:250px}.xp .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}.contact{border-radius:22px}.pill{gap:2px 14px;padding:8px 16px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.portrait,.portrait .ring,.portrait image{animation:none}.card{transition:none}}
+@media(max-width:860px){.ec{grid-template-columns:minmax(0,1fr);gap:12px}}
+@media(max-width:640px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.portrait{grid-row:1;width:250px}.xp .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}.xpn{display:inline-block;margin-right:28px}.xpn+.xpn{margin-top:0}.tc{flex-basis:170px;min-height:150px}.words p{font-size:28px}section{padding:48px 0}h2{font-size:28px}.contact{border-radius:22px}.pill{gap:2px 14px;padding:8px 16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.portrait,.portrait image{animation:none}.card{transition:none}}
 </style>
 </head>
 <body>
@@ -140,8 +141,7 @@ dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px soli
           <clipPath id="pebble"><path d="M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z"><animate attributeName="d" dur="14s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1" keyTimes="0;.33;.66;1" values="M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z;M95 125 C165 58 322 52 412 88 C482 118 472 212 446 292 C410 392 308 446 208 430 C108 414 28 338 36 252 C40 204 58 168 95 125Z;M60 170 C100 80 280 30 390 50 C480 66 492 180 470 270 C442 372 340 462 230 446 C128 432 46 376 28 286 C20 236 36 206 60 170Z;M70 150 C120 70 300 40 400 60 C470 75 485 170 462 262 C432 382 330 452 222 442 C120 432 40 362 32 272 C27 222 42 190 70 150Z"/></path></clipPath>
           <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6fbf6"/><stop offset=".55" stop-color="#5fb9b0"/><stop offset="1" stop-color="#1e5c56"/></linearGradient>
         </defs>
-        <path class="ring" d="M95 125 C165 58 322 52 412 88 C482 118 472 212 446 292 C410 392 308 446 208 430 C108 414 28 338 36 252 C40 204 58 168 95 125Z" transform="translate(-14 10) scale(1.04)"/>
-        <g clip-path="url(#pebble)"><rect width="500" height="500" fill="url(#mint)"/><image href="img/pavith.jpg" x="0" y="20" width="500" height="500" preserveAspectRatio="xMidYMin slice"/></g>
+        <g clip-path="url(#pebble)"><rect width="500" height="500" fill="url(#mint)"/><image href="img/pavith.jpg" x="-40" y="62" width="580" height="580" preserveAspectRatio="xMidYMin slice"/></g>
       </svg>
     </div>
   </div>
@@ -167,7 +167,7 @@ dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px soli
 </section>
 
 <section id="work" style="padding-top:20px"><div class="wrap">
-  <div class="head"><h2>Selected work</h2><p>Click any map to view it full size. Use the arrow keys to move through the gallery.</p></div>
+  <div class="head"><h2>Selected work</h2><p>Click a map to view it full size. Web GIS projects open as live, interactive demos.</p></div>
   <div class="tabs" role="tablist" id="tabs"></div>
   <div class="grid" id="grid"></div>
 </div></section>
@@ -221,7 +221,7 @@ dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px soli
 
 <script>
 {
-const tools=[['Q','QGIS','Daily driver for analysis and layouts','#c5c99e'],['A','ArcGIS Pro','Used on client projects','#85a0a8'],['Py','Python','PyQGIS, GeoPandas, Rasterio','#c8c8c8'],['Ai','Illustrator','Print-ready map finishing','#bfe3dc'],['RS','Remote sensing','Sentinel-2, NDVI, land cover','#d9c2ff'],['JS','Leaflet','Interactive web maps','#e9d8a6']];
+const tools=[['Q','QGIS','Daily driver for analysis and layouts','#c5c99e'],['A','ArcGIS Pro','Used on client projects','#85a0a8'],['Py','Python','PyQGIS, GeoPandas, Rasterio','#c8c8c8'],['Ai','Illustrator','Print-ready map finishing','#bfe3dc'],['Ps','Photoshop','Image editing and mockups','#a9c6e8'],['RS','Remote sensing','Sentinel-2, NDVI, land cover','#d9c2ff'],['JS','Leaflet','Interactive web maps','#e9d8a6']];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 document.getElementById('rail').innerHTML=tools.map(t=>`<div class="tc" style="background:${t[3]}"><i>${esc(t[0])}</i><b>${esc(t[1])}</b><span>${esc(t[2])}</span></div>`).join('');
 
@@ -237,12 +237,13 @@ const sets={
 ['v01','Study area map','Location and physiographic setting of Boulder County, Colorado, with locator inset.','DEM · Cartography'],
 ['v10','City tourist map','Places to visit in Kandy city centre, categorised points and legend.','OSM · Cartography']],
 'Web GIS':[
-['w01','Sri Lanka District Atlas','Choropleth web map of 25 districts, Census 2012 vs 2024, with 9 indicators, ranking chart and CSV/GeoJSON export.','Leaflet · JavaScript · Python'],
-['w04','Interactive site suitability','Weighted-overlay model in the browser with adjustable weights, exclusions and ranked top-10 sites.','MCDA · Canvas'],
-['w05','Live earthquake dashboard','USGS feed refreshed every 60 s: depth-coloured markers, KPIs, magnitude histogram and timeline.','Real-time GeoJSON'],
-['w06','Satellite before/after viewer','Swipe between two dates of NASA GIBS imagery to compare change, such as the Aral Sea.','WMTS · NASA GIBS'],
-['w03','Plot plan overlay','Subdivision plan georeferenced onto satellite imagery with plot filters, measure tool and export.','Georeferencing · Leaflet'],
-['w07','GIS data-cleaning toolkit','Python script that fixes DMS coordinates, swapped lat/long and duplicates, assigns districts and writes a QA report.','Python · Data QA']],
+['w01','Sri Lanka District Atlas','Choropleth web map of 25 districts, Census 2012 vs 2024, with 9 indicators, ranking chart and CSV/GeoJSON export.','Leaflet · JavaScript · Python','https://pavith9911.github.io/sri-lanka-district-atlas/'],
+['w04','Interactive site suitability','Weighted-overlay model in the browser with adjustable weights, exclusions and ranked top-10 sites.','MCDA · Canvas','https://pavith9911.github.io/gis-portfolio/04-solar-site-suitability/'],
+['w05','Live earthquake dashboard','USGS feed refreshed every 60 s: depth-coloured markers, KPIs, magnitude histogram and timeline.','Real-time GeoJSON','https://pavith9911.github.io/gis-portfolio/05-live-earthquake-dashboard/'],
+['w06','Satellite before/after viewer','Swipe between two dates of NASA GIBS imagery to compare change, such as the Aral Sea.','WMTS · NASA GIBS','https://pavith9911.github.io/gis-portfolio/06-satellite-swipe-viewer/'],
+['w03','Plot plan overlay','Subdivision plan georeferenced onto satellite imagery with plot filters, measure tool and export.','Georeferencing · Leaflet','https://pavith9911.github.io/gis-portfolio/03-plot-plan-overlay/'],
+['w02','Business directory map','Searchable store locator with category filters, clustering and near-me search.','Leaflet · Clustering','https://pavith9911.github.io/gis-portfolio/02-business-directory-map/'],
+['w07','GIS data-cleaning toolkit','Python script that fixes DMS coordinates, swapped lat/long and duplicates, assigns districts and writes a QA report.','Python · Data QA','https://pavith9911.github.io/gis-portfolio/07-gis-data-cleaning-toolkit/output/report.html']],
 'Client cartography':[
 ['c36','Middle East & Africa energy projects','Major energy projects plotted from a client database with insets and a categorised directory.','QGIS · Illustrator'],
 ['c34','Saudi Arabia projects map','Top projects across Saudi Arabia with regional insets and a project directory.','QGIS · Illustrator'],
@@ -264,7 +265,7 @@ const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
 const render=()=>{
   tabs.innerHTML=names.map(n=>`<button role="tab" aria-selected="${n===active}" data-n="${esc(n)}">${esc(n)} · ${sets[n].length}</button>`).join('');
   list=sets[active];
-  grid.innerHTML=list.map((d,i)=>`<button class="card" data-i="${i}"><img loading="lazy" src="img/${d[0]}_t.jpg" alt="${esc(d[1])}"><div><h3>${esc(d[1])}</h3><p>${esc(d[2])}</p><small>${esc(d[3])}</small></div></button>`).join('');
+  grid.innerHTML=list.map((d,i)=>d[4]?`<a class="card live" href="${esc(d[4])}" target="_blank" rel="noopener"><img loading="lazy" src="img/${d[0]}_t.jpg" alt="${esc(d[1])}"><div><h3>${esc(d[1])}</h3><p>${esc(d[2])}</p><small>${esc(d[3])}</small><span class="go">Open live demo ↗</span></div></a>`:`<button class="card" data-i="${i}"><img loading="lazy" src="img/${d[0]}_t.jpg" alt="${esc(d[1])}"><div><h3>${esc(d[1])}</h3><p>${esc(d[2])}</p><small>${esc(d[3])}</small></div></button>`).join('');
 };
 render();
 tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;active=b.dataset.n;render();});
