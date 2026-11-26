@@ -35,7 +35,7 @@ nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padd
 .icons svg{width:16px;height:16px;fill:currentColor}
 /* hero */
 .hero{padding-top:clamp(60px,9vw,120px);position:relative}.hero .wrap,.words p{position:relative;z-index:1}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,620px) minmax(0,420px);justify-content:center;gap:clamp(32px,6vw,96px);align-items:center;max-width:1240px}
 .hero h1{font-size:clamp(40px,6vw,60px);font-weight:400}
 .hero p{max-width:62ch;color:var(--mute);font-size:17px;margin:22px 0 28px}
 .hero p b{color:var(--soft)}
@@ -43,7 +43,7 @@ nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padd
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink)}
 .btn.w{background:#eaeaea;color:#111}
 .btn:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
-.portrait{justify-self:center;width:min(440px,100%);position:relative;animation:float 7s ease-in-out infinite}
+.portrait{justify-self:center;width:min(420px,100%);position:relative;animation:float 7s ease-in-out infinite}
 .portrait svg{display:block;width:100%;height:auto;overflow:visible}
 .portrait .halo{position:absolute;inset:30% 10% 4%;border-radius:50%;background:radial-gradient(circle,rgba(95,185,176,.55),transparent 70%);filter:blur(40px);z-index:-1}
 .portrait svg{animation:rise 1.2s cubic-bezier(.2,.8,.2,1) both}
@@ -64,8 +64,15 @@ nav{position:sticky;top:14px;z-index:10;display:flex;justify-content:center;padd
 .tc span{font-size:13px;line-height:1.4}
 /* words */
 .words{text-align:center;position:relative;overflow:hidden}
-.words p{margin:0;font-size:clamp(30px,5vw,50px);line-height:1.35;font-weight:500;position:relative}
+.words p{margin:0;position:relative}
 .words .sub{font-size:16px;color:var(--mute);margin-top:22px}
+.ticker{position:relative;z-index:1;height:calc(var(--lh)*5);overflow:hidden;--lh:clamp(44px,6.2vw,72px);-webkit-mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent)}
+.ticker ul{list-style:none;margin:0;padding:0;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.ticker li{height:var(--lh);line-height:var(--lh);font-size:clamp(26px,4.4vw,50px);font-weight:500;color:#5b4a86;white-space:nowrap;transition:color .6s,transform .6s,opacity .6s;opacity:.55;transform:scale(.88)}
+.ticker li.near{color:#9a7cf0;opacity:.85;transform:scale(.94)}
+.ticker li.on{color:#e3d6ff;opacity:1;transform:scale(1);text-shadow:0 0 30px rgba(178,146,255,.45)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.words .sub{position:relative;z-index:1}
 /* work */
 .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 30px;margin-bottom:26px}
 .head p{margin:0;color:var(--mute);max-width:52ch}
@@ -113,7 +120,8 @@ dialog .cap{display:flex;gap:10px;align-items:center;padding:10px 14px}
 dialog .cap p{margin:0;flex:1;font-size:14px}
 dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px solid var(--line);background:#1b1b1b;color:var(--ink);font:600 14px Raleway,sans-serif;cursor:pointer;padding:0 14px}
 @media(max-width:860px){.ec{grid-template-columns:minmax(0,1fr);gap:12px}}
-@media(max-width:640px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.portrait{grid-row:1;width:250px}.xp .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}.xpn{display:inline-block;margin-right:28px}.xpn+.xpn{margin-top:0}.tc{flex-basis:170px;min-height:150px}.words p{font-size:28px}section{padding:48px 0}h2{font-size:28px}.contact{border-radius:22px}.pill{gap:2px 14px;padding:8px 16px}}
+@media(max-width:640px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.portrait{grid-row:1;width:250px}.xp .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}.xpn{display:inline-block;margin-right:28px}.xpn+.xpn{margin-top:0}.tc{flex-basis:170px;min-height:150px}section{padding:48px 0}h2{font-size:28px}.contact{border-radius:22px}.pill{gap:2px 14px;padding:8px 16px}}
+@media(max-width:640px){.words .glow{width:70vw!important;height:50vw!important;filter:blur(50px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.portrait,.portrait svg{animation:none}.card{transition:none}}
 </style>
 </head>
@@ -159,12 +167,11 @@ dialog button{min-height:44px;min-width:44px;border-radius:999px;border:1px soli
   </div>
 </section>
 
-<section class="words" aria-label="Focus areas">
-  <div class="glow" style="width:520px;height:300px;background:#7b2fe0;left:50%;top:30%;transform:translateX(-50%)"></div>
-  <div class="glow" style="width:260px;height:260px;background:#b0258f;left:60%;top:10%"></div>
-  <p style="color:#d2bdff">Spatial analysis</p>
-  <p style="color:#b292ff">Remote sensing</p>
-  <p style="color:#8a5cf6">Cartography</p>
+<section class="words" aria-label="Skills">
+  <div class="glow" style="width:560px;height:320px;background:#7b2fe0;left:50%;top:25%;transform:translateX(-50%)"></div>
+  <div class="glow" style="width:260px;height:260px;background:#b0258f;left:62%;top:8%"></div>
+  <div class="ticker" aria-hidden="true"><ul id="tk"><li>Spatial analysis</li><li>Remote sensing</li><li>Cartography</li><li>Site suitability (MCDA)</li><li>Web GIS &amp; dashboards</li><li>DEM, terrain &amp; hydrology</li><li>Land use / land cover</li><li>Hotspot &amp; network analysis</li><li>Python &amp; PyQGIS automation</li><li>Georeferencing &amp; digitising</li><li>Data conversion &amp; QA</li><li>Print-ready map design</li><li>Spatial analysis</li><li>Remote sensing</li><li>Cartography</li><li>Site suitability (MCDA)</li><li>Web GIS &amp; dashboards</li><li>DEM, terrain &amp; hydrology</li><li>Land use / land cover</li><li>Hotspot &amp; network analysis</li><li>Python &amp; PyQGIS automation</li><li>Georeferencing &amp; digitising</li><li>Data conversion &amp; QA</li><li>Print-ready map design</li></ul></div>
+  <ul class="sr"><li>Spatial analysis</li><li>Remote sensing</li><li>Cartography</li><li>Site suitability (MCDA)</li><li>Web GIS &amp; dashboards</li><li>DEM, terrain &amp; hydrology</li><li>Land use / land cover</li><li>Hotspot &amp; network analysis</li><li>Python &amp; PyQGIS automation</li><li>Georeferencing &amp; digitising</li><li>Data conversion &amp; QA</li><li>Print-ready map design</li></ul>
   <p class="sub">What I do, from raw data to a finished map</p>
 </section>
 
@@ -261,6 +268,18 @@ const sets={
 ['c31','Alta Via 1 trail poster','Dolomites trail on contour terrain, styled for print.','DEM · Contours'],
 ['c28','Off-road trip commemorative map','30 × 40 in canvas tracing a group route across the western USA.','QGIS · Illustrator'],
 ['c10','Sydney railway network','Schematic railway map of the Sydney network for print.','Schematic cartography'],
+['c50','Suzuka circuit poster','F1 circuit map with track outline, surrounding streets and circuit facts, dark style.','OSM · Illustrator'],
+['c52','London Marathon route poster','Personalised race-route print with runner name, pace, distance and finish time.','GPX · Illustrator'],
+['c55','Nashville city map','Bold street-network poster with river and parks in a custom neon palette.','OSM · Illustrator'],
+['c54','Munich city map','Pastel gradient street-network poster for wall art.','OSM · Illustrator'],
+['c51','Las Vegas city map','Minimal street-network poster with coordinates.','OSM · Illustrator'],
+['c42','Geneva street map','Minimal street-network poster with landmark skyline, A2.','OSM · Illustrator'],
+['c42b','Marrakech medina map','Street map of the medina with coordinates, A2 print.','OSM · Illustrator'],
+['c33','John Muir Trail poster','Trail on contour terrain through the Sierra Nevada, styled for print.','DEM · Contours'],
+['c39','Paris landmarks map','Illustrated city map with landmark icons on a bold yellow base.','Illustrated cartography'],
+['c37','Angwin street map','Street and building map of Angwin, California, with a full street index.','OSM · Illustrator'],
+['c11','Delivery zone map','Service zones with tiered delivery pricing for a food business.','Zoning · Illustrator'],
+['c21','Accra location map','Office location map with three zoom levels, Adjiringanor, Ghana.','OSM · Illustrator'],
 ['c40','Total solar eclipse 2026','Path of totality on an orthographic globe, A3 print.','Projections · Illustrator']]};
 const names=Object.keys(sets);let active=names[0];let list=sets[active];
 const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
@@ -278,6 +297,15 @@ document.getElementById('prev').onclick=()=>show(cur-1);
 document.getElementById('next').onclick=()=>show(cur+1);
 document.getElementById('close').onclick=()=>lb.close();
 lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+
+const tk=document.getElementById('tk');
+if(tk){const n=tk.children.length/2;let k=0;
+  const paint=()=>{const lh=tk.children[0].offsetHeight;tk.style.transform=`translateY(${-(k)*lh}px)`;
+    [...tk.children].forEach((li,ix)=>{const d=Math.abs(ix-(k+2));li.className=d===0?'on':d===1?'near':'';});};
+  paint();
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=>{k++;paint();if(k>=n){setTimeout(()=>{tk.style.transition='none';k=0;paint();tk.offsetHeight;tk.style.transition='';},750);}},1900);}
+  window.addEventListener('resize',paint);}
 document.addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
 }
 </script>
